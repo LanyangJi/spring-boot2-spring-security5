@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+
+</div>
+<h1>首页</h1>
+<h3>
+    欢迎使用 spring security,
+    当前登录的用户是：<span th:text="${name}"></span>
+    通过标签显示登录名：<span sec:authentication="name"></span>
+</h3>
+
+<!--spring security 为我们写好了登出功能-->
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="登出">
+</form>
+
+
+<a th:href="@{/adminPage}" sec:authorize="hasRole('admin')">管理员主页</a> <br />
+<a th:href="@{/userPage}" sec:authorize="hasAnyRole('user', 'admin')">用户主页</a> <br />
+<a th:href="@{/helloAdmin}" sec:authorize="hasRole('admin')">helloAdmin</a> <br />
+<a th:href="@{/helloUser}" sec:authorize="hasAnyRole('admin', 'user')">helloUser</a> <br />
+
+
+<script language="JavaScript" th:text="">
+    new Vue({
+        el: '#testVue',
+        data: {
+            msg: 'Hello, vue'
+        }
+    })
+</script>
+</body>
+</html>
