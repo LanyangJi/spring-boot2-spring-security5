@@ -26,14 +26,5 @@
 <a th:href="@{/helloAdmin}" sec:authorize="hasRole('admin')">helloAdmin</a> <br />
 <a th:href="@{/helloUser}" sec:authorize="hasAnyRole('admin', 'user')">helloUser</a> <br />
 
-
-<script language="JavaScript" th:text="">
-    new Vue({
-        el: '#testVue',
-        data: {
-            msg: 'Hello, vue'
-        }
-    })
-</script>
 </body>
 </html>
